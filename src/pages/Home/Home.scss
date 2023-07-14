@@ -1,0 +1,170 @@
+.home {
+  background-color: #343541;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1 1 auto;
+  display: flex;
+ 
+  nav {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    color: #fff;
+    & > .logo {
+      color: #fff;
+    }
+  }
+}
+
+.image {
+  width: 50%; /* Set the initial width of the image */
+  transform: scale(0.5); /* Scale down the image by 50% */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -10%;
+  margin-bottom: -4%;
+
+}
+.welcome1 {
+  font-size: 3.0rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.welcome2 {
+  font-size: 1.5rem;
+
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+.flex-row {
+  flex-direction: row;
+}
+
+.flex {
+  display: flex;
+}
+
+
+.relative {
+  position: relative;
+}
+.btn-primary {
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 1;
+  background-color: rgba(16,163,127,var(--tw-bg-opacity));
+  color: rgba(255,255,255,var(--tw-text-opacity));
+}
+.btn {
+  justify-content: center;
+  align-items: center;
+  border-color: transparent;
+  border-radius: 0.25rem;
+  border-width: 6px;
+  display: inline-flex;
+  font-size: .875rem;
+  line-height: 1.25rem;
+  padding: 0.5rem 0.75rem;
+  pointer-events: auto;
+}
+
+[role=button], button {
+  cursor: pointer;
+}
+
+button, select {
+  margin: 0.6rem;
+  text-transform: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+.justify-center {
+  justify-content: center;
+}
+.items-center {
+  align-items: center;
+}
+.w-full {
+  width: 100%;
+}
+.flex {
+  display: flex;
+}
+.kolor {
+  color: #fff;
+}
+body, div, a, p, span {
+  user-select: text !important;
+}
+p {
+  font-weight:bold;
+  color: #fff;
+}
+
+
+  .home-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & li a {
+      color: #fff;
+    }
+    & > * {
+      margin-left: 1rem;
+      color: #fff;
+    }
+  }
+  
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero-text {
+    width: 50%;
+    & > * {
+      color: #fff;
+      margin-bottom: 2rem;
+    }
+    & > h2 span {
+      display: block;
+    }
+    & .hero-buttons a {
+      color: #fff;
+    }
+  }
+  .hero-image {
+    width: 50%;
+  }
+  @media screen and (max-width: 600px) {
+    .hero {
+      flex-direction: column;
+    }
+  
+    .hero-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      margin: auto;
+      text-align: center;
+    }
+    .hero-image {
+      width: 100%;
+      &img {
+        width: 100%;
+      }
+    }
+  }
