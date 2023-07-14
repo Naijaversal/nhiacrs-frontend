@@ -2,7 +2,7 @@ import { BiSolidDashboard } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import {BsCalendar2Plus,BsCalendar4Event, BsCartCheck, BsCart, BsPencilSquare, BsCartPlus, BsCartDash, BsBook } from "react-icons/bs";
 import {  FaRegCalendarCheck} from "react-icons/fa";
-import {LiaClipboardCheckSolid} from "react-icons/lia"
+import {BsClipboardCheck} from "react-icons/bs"
 
 const menu = [
 
@@ -46,7 +46,7 @@ const menu = [
       },
       {
         title: "Approve Reports",
-        icon: <LiaClipboardCheckSolid size={15}/>,
+        icon: <BsClipboardCheck size={15}/>,
         path: "/approve-request",
       },
     ],
