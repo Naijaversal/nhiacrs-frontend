@@ -35,7 +35,7 @@ const menu = [
     childrens: [
       {
         title: "Summary",
-        icon: <BBsDice4 size={15}/>,
+        icon: <BsDice4 size={15}/>,
         path: "/report-dashboard",
       },
       {
