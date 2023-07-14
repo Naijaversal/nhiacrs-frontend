@@ -1,6 +1,5 @@
-import { BiSolidDashboard } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
-import {BsCalendar2Plus,BsCalendar4Event, BsCartCheck, BsCart, BsPencilSquare, BsCartPlus, BsCartDash, BsBook } from "react-icons/bs";
+import {BsDice4,BsCalendar2Plus,BsCalendar4Event, BsCartCheck, BsCart, BsPencilSquare, BsCartPlus, BsCartDash, BsBook } from "react-icons/bs";
 import {  FaRegCalendarCheck} from "react-icons/fa";
 import {BsClipboardCheck} from "react-icons/bs"
 
@@ -12,7 +11,7 @@ const menu = [
     childrens: [
       {
         title: "Summary",
-        icon: <BiSolidDashboard size={15}/>,
+        icon: <BsDice4 size={15}/>,
         path: "/dashboard",
       },
       {
@@ -36,7 +35,7 @@ const menu = [
     childrens: [
       {
         title: "Summary",
-        icon: <BiSolidDashboard size={15}/>,
+        icon: <BBsDice4 size={15}/>,
         path: "/report-dashboard",
       },
       {
@@ -58,7 +57,7 @@ const menu = [
     childrens: [
       {
         title: "Summary",
-        icon: <BiSolidDashboard size={15}/>,
+        icon: <BsDice4 size={15}/>,
         path: "/activity-dashboard",
       },
       {
