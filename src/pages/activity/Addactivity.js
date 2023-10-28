@@ -15,7 +15,7 @@ const initialState = {
   price: "",
 };
 
-const AddProduct = () => {
+const AddActivity = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [product, setProduct] = useState(initialState);
@@ -25,7 +25,7 @@ const AddProduct = () => {
 
   const isLoading = useSelector(selectIsLoading);
 
-  const { name, category, quantity } = product;
+  const { name, category, price, quantity } = product;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -51,6 +51,7 @@ const AddProduct = () => {
     formData.append("sku", generateKSKU(category));
     formData.append("category", category);
     formData.append("quantity", Number(quantity));
+    formData.append("price", price);
     formData.append("description", description);
     formData.append("image", productImage);
 
@@ -64,7 +65,7 @@ const AddProduct = () => {
   return (
     <div>
       {isLoading && <Loader />}
-      <h3 className="--mt">Add New Item</h3>
+      <h3 className="--mt">Add New Product</h3>
       <ProductForm
         product={product}
         productImage={productImage}
@@ -79,4 +80,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default AddActivity;

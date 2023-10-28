@@ -5,7 +5,6 @@ import Card from "../../card/Card";
 
 import "./ProductForm.scss";
 
-
 const ProductForm = ({
   product,
   productImage,
@@ -20,10 +19,29 @@ const ProductForm = ({
     <div className="add-product">
       <Card cardClass={"card"}>
         <form onSubmit={saveProduct}>
+          <Card cardClass={"group"}>
+            <label>Item Image</label>
+            <code className="--color-dark">
+              Supported Formats: jpg, jpeg, png
+            </code>
+            <input
+              type="file"
+              name="image"
+              onChange={(e) => handleImageChange(e)}
+            />
+
+            {imagePreview != null ? (
+              <div className="image-preview">
+                <img src={imagePreview} alt="product" />
+              </div>
+            ) : (
+              <p>No image set for this item.</p>
+            )}
+          </Card>
           <label>Item Name:</label>
           <input
             type="text"
-            placeholder="Name"
+            placeholder="name"
             name="name"
             value={product?.name}
             onChange={handleInputChange}
@@ -31,6 +49,7 @@ const ProductForm = ({
 
           <label>Item Category:</label>
           <select
+            type="text"
             name="category"
             value={product?.category}
             onChange={handleInputChange}
@@ -46,16 +65,7 @@ const ProductForm = ({
             <option value="Others">Others</option>
           </select>
 
-          <label>Item Price:</label>
-          <input
-            type="text"
-            placeholder="Price"
-            name="price"
-            value={product?.price}
-            onChange={handleInputChange}
-          />
-
-          <label>Item Quantity:</label>
+          <label>Quantity:</label>
           <input
             type="text"
             placeholder="Quantity"
@@ -64,7 +74,7 @@ const ProductForm = ({
             onChange={handleInputChange}
           />
 
-          <label>Item Description:</label>
+          <label>Description:</label>
           <ReactQuill
             theme="snow"
             value={description}

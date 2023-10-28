@@ -42,7 +42,7 @@ const ProductList = ({ products, isLoading }) => {
   const confirmDelete = (id) => {
     confirmAlert({
       title: "Delete Product",
-      message: "Are you sure you want to delete this product.",
+      message: "Are you sure you want to delete this item.",
       buttons: [
         {
           label: "Delete",
@@ -107,50 +107,43 @@ const ProductList = ({ products, isLoading }) => {
                   <th>s/n</th>
                   <th>Name</th>
                   <th>Category</th>
-                  <th>Price</th>
                   <th>Quantity</th>
-                  <th>Value</th>
                   <th className="--center-all">Action</th>
                 </tr>
               </thead>
 
               <tbody>
                 {currentItems.map((product, index) => {
-                  const { _id, name, category, price, quantity } = product;
+                  const { _id, name, category, quantity } = product;
                   return (
                     <tr key={_id}>
                       <td>{index + 1}</td>
                       <td>{shortenText(name, 16)}</td>
                       <td>{category}</td>
-                      <td>
-                        {"₦ "}
-                        {price}
-                      </td>
                       <td>{quantity}</td>
-                      <td>
-                        {"₦ "}
-                        {price * quantity}
-                      </td>
+                    
                       
                       <td className="icons">
                      
                         <span className="--center-all">
                           <Link to={`/product-detail/${_id}`}>
-                            <AiOutlineEye size={15} color={"white"} />
+                           <button className="--btn --btn-danger">Details</button>
+                            {/* <AiOutlineEye size={15} color={"white"} /> */}
                           </Link>
                         </span>
                         <span className="--center-all">
                           <Link to={`/edit-product/${_id}`}>
-                            <FaEdit size={15} color={"white"} />
+                         <button className="--btn --btn-secondary">Edit</button>
+                            {/* <FaEdit size={15} color={"white"} /> */}
                           </Link>
                         </span>
-                        <span className="--center-all">
+                        {/* <span className="--center-all">
                           <FaTrashAlt
                             size={15}
                             color={"red"}
                             onClick={() => confirmDelete(_id)}
                           />
-                        </span>
+                        </span> */}
                      
                         <span className="--center-all">
                           <Link to={`/request-product/${_id}`}>

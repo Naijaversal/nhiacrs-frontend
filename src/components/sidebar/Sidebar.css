@@ -1,0 +1,162 @@
+.layout {
+  display: flex;
+}
+
+main {
+  width: 100%;
+  color: #ccc;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 230px;
+  height: 100vh;
+  flex-shrink: 0;
+  background-color: rgb(0, 0, 0);
+  overflow: auto;
+  color: var(-color-dark);
+  transition: all 0.4s;
+}
+@media screen and (max-width: 600px) {
+  .sidebar {
+    max-width: 35%;
+  }
+}
+
+.image1 {
+  width: 100%; /* Set the initial width of the image */
+  transform: scale(1); /* Scale down the image by 50% */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.top_section {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  transition: all 0.5s;
+  background-color: rgba(0, 0, 0, 0.356);
+  height: 70px;
+}
+
+.logo {
+  font-size: 30px;
+  color: var(--color-white);
+}
+
+.bars {
+  display: flex;
+  font-size: 35px;
+  margin-left: 70px;
+  cursor: pointer;
+  color: #10a37f;
+  transition: all 0.3s;
+}
+
+.bars:hover {
+  color: white;
+  font-size: 27px;
+}
+
+.sidebar-item {
+  padding: 0.75em 1em;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.553);
+  transition: background-color 0.15s;
+  color: #fff;
+}
+
+.s-parent {
+  border-bottom: 2px solid #10a37f;
+}
+
+.sidebar-item:hover {
+  background-color: rgba(7, 100, 77, 0.564);
+}
+
+.sidebar-title {
+  display: flex;
+  font-size: 1.2em;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-title span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  transition: all 0.5s;
+  font-size: 1.6rem;
+}
+
+.sidebar-title span .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5em;
+  font-size: 25px;
+  color: #fff;
+}
+
+.sidebar-title .arrow-icon {
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.sidebar-item.open > .sidebar-title .arrow-icon {
+  transform: rotate(90deg);
+}
+
+.sidebar-content {
+  padding-top: 0.25em;
+  height: 0;
+  overflow: hidden;
+}
+
+.sidebar-item.open > .sidebar-content {
+  height: auto;
+}
+
+.s-child {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+.s-child:hover {
+  border: 2px solid white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.active {
+  color: #fff;
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: rgb(23, 237, 87);
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  right: 0;
+  top: 0;
+  background-color: #10a37f;
+}
+
+.sublink .sidebar-item .sidebar-title {
+  padding-left: 40px;
+}/*# sourceMappingURL=Sidebar.css.map */

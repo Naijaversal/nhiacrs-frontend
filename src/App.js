@@ -23,6 +23,8 @@ import RequestProduct from "./pages/requestProduct/Request";
 import { ShowOnAdmin } from "./components/protect/HiddenLink";
 import Contact from "./pages/contact/Contact";
 import AllRequest from "./pages/dashboard/AllRequest";
+import Activitydashboard from "./pages/activity/Activitydashboard";
+import AddActivity from "./pages/activity/Addactivity";
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -131,11 +133,21 @@ limit={1} />
           }
         />
         <Route
-          path="/contact-us"
+          path="/activity-dashboard"
           element={
             <Sidebar>
               <Layout>
-                <Contact />
+                <Activitydashboard />
+              </Layout>
+            </Sidebar>
+          }
+        />
+        <Route
+          path="/add-activity"
+          element={
+            <Sidebar>
+              <Layout>
+                <AddActivity />
               </Layout>
             </Sidebar>
           }

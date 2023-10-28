@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ProductList from "../../components/product/productList/ProductList";
+import RequestList from "../../components/product/requestList/requestList";
 import ProductSummary from "../../components/product/productSummary/ProductSummary";
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 import { selectIsLoggedIn } from "../../redux/features/auth/authSlice";
 import { getProducts } from "../../redux/features/product/productSlice";
+import { ShowOnAdmin, ShowOnUser } from "../../components/protect/HiddenLink";
 
-const Dashboard = () => {
+const Activitydashboard = () => {
   useRedirectLoggedOutUser("/login");
   const dispatch = useDispatch();
 
@@ -27,10 +28,12 @@ const Dashboard = () => {
 
   return (
     <div>
+    <ShowOnAdmin>
       <ProductSummary products={products} />
-      <ProductList products={products} isLoading={isLoading} />
+      </ShowOnAdmin>
+      <RequestList products={products} isLoading={isLoading} />
     </div>
   );
 };
 
-export default Dashboard;
+export default Activitydashboard;

@@ -8,6 +8,7 @@ import Card from "../../card/Card";
 import { SpinnerImg } from "../../loader/Loader";
 import "./ProductDetail.scss";
 import DOMPurify from "dompurify";
+import { Link } from "react-router-dom";
 
 const ProductDetail = () => {
   useRedirectLoggedOutUser("/login");
@@ -45,7 +46,7 @@ const ProductDetail = () => {
         {product && (
           <div className="detail">
             
-            <h4>Product Availability: {stockStatus(product.quantity)}</h4>
+            <h4>Item Availability: {stockStatus(product.quantity)}</h4>
             <hr />
             <h4>
               <span className="badge">Name: </span> &nbsp; {product.name}
@@ -63,10 +64,7 @@ const ProductDetail = () => {
             <p>
               <b>&rarr; Quantity in stock : </b> {product.quantity}
             </p>
-            <p className="total-stock-set">
-              <b>&rarr; Total Value in stock : </b> {"₦ "}
-              {product.price * product.quantity}
-            </p>
+            
             <hr />
             <div 
               dangerouslySetInnerHTML={{
@@ -81,7 +79,11 @@ const ProductDetail = () => {
             <code className="--color-success">
               Last Updated: {product.updatedAt.toLocaleString("en-US")}
             </code>
+             <Link to={`/dashboard`}>
+                           <button className="--btn --btn-primary">Back</button>
+                           </Link>
           </div>
+          
         )}
       </Card>
     </div>

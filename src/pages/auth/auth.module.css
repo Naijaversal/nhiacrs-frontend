@@ -1,0 +1,119 @@
+.auth {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.auth .img {
+  animation: slide-down 0.5s ease;
+}
+.auth .form {
+  width: 35rem;
+  padding: 1.5rem;
+  animation: slide-up 0.5s ease;
+  background-color: #000000;
+}
+.auth .form h2 {
+  color: var(--color-danger);
+  text-align: center;
+}
+.auth .form form input[type=text],
+.auth .form form input[type=email],
+.auth .form form input[type=password] {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 300;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-bottom: 3px solid #ccc;
+  border-radius: 3px;
+  outline: none;
+}
+.auth .form form input[type=text]:focus,
+.auth .form form input[type=email]:focus,
+.auth .form form input[type=password]:focus {
+  outline: none;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid #55c57a;
+}
+.auth .form form input[type=text]:focus:invalid,
+.auth .form form input[type=email]:focus:invalid,
+.auth .form form input[type=password]:focus:invalid {
+  border-bottom: 3px solid #ff7730;
+}
+.auth .form form .links {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+.auth .form form p {
+  text-align: center;
+  margin: 1rem;
+}
+.auth .form .register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+@keyframes slide-up {
+  0% {
+    transform: translateY(-5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes slide-down {
+  0% {
+    transform: translateY(5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .img {
+    display: none;
+  }
+}
+.image {
+  width: 50%; /* Set the initial width of the image */
+  transform: scale(0.8); /* Scale down the image by 50% */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome3 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 0.9rem;
+  margin-top: -1rem;
+  color: #fff;
+}
+
+.welcome4 {
+  font-size: 3rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.9rem;
+  margin-top: -1rem;
+  color: #fff;
+}
+
+.welcome5 {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 0.9rem;
+  margin-top: 1rem;
+  color: #fff;
+}/*# sourceMappingURL=auth.module.css.map */

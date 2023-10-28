@@ -107,81 +107,7 @@ export const updateProduct = createAsyncThunk(
     }
   }
 );
-// Request Product
-export const requestProduct = createAsyncThunk(
-  "products/requestProduct",
-  async (formData, thunkAPI) => {
-    try {
-      return await productService.createRequest(
-       formData);
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      console.log(message);
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
 
-// Approve Request
-export const approveRequest = createAsyncThunk(
-  "products/approveRequest",
-  async (id, thunkAPI) => {
-    try {
-      return await productService.approveRequest(id);
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      console.log(message);
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-
-// Reject Request
-export const rejectRequest = createAsyncThunk(
-  "products/rejectRequest",
-  async (id, thunkAPI) => {
-    try {
-      return await productService.rejectRequest(id);
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      console.log(message);
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-// Delete request
-export const deleteRequest = createAsyncThunk(
-  "products/deleteRequest",
-  async (id, thunkAPI) => {
-    try {
-      return await productService.deleteRequest(id);
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      console.log(message);
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
 
 const productSlice = createSlice({
   name: "product",
@@ -308,91 +234,7 @@ const productSlice = createSlice({
         state.message = action.payload;
         toast.error(action.payload);
       })
-            .addCase(requestProduct.pending, (state) => {
-              state.isLoading = true;
-            })
-            .addCase(requestProduct.fulfilled, (state, action) => {
-              state.isLoading = false;
-              state.isSuccess = true;
-              state.isError = false;
-              console.log(action.payload);
-              // Handle the response data as needed
-            })
-            .addCase(requestProduct.rejected, (state, action) => {
-              state.isLoading = false;
-              state.isError = true;
-              state.message = action.payload;
-              toast.error(action.payload);
-            })
-            .addCase(approveRequest.pending, (state) => {
-              state.isLoading = true;
-            })
-            .addCase(approveRequest.fulfilled, (state, action) => {
-              state.isLoading = false;
-              state.isSuccess = true;
-              state.isError = false;
-              // Handle the response data as needed
-            })
-            .addCase(approveRequest.rejected, (state, action) => {
-              state.isLoading = false;
-              state.isError = true;
-              state.message = action.payload;
-              toast.error(action.payload);
-            })
-            .addCase(rejectRequest.pending, (state) => {
-              state.isLoading = true;
-            })
-            .addCase(rejectRequest.fulfilled, (state, action) => {
-              state.isLoading = false;
-              state.isSuccess = true;
-              state.isError = false;
-              // Handle the response data as needed
-            })
-            .addCase(rejectRequest.rejected, (state, action) => {
-              state.isLoading = false;
-              state.isError = true;
-              state.message = action.payload;
-              toast.error(action.payload);
-            })
-
-            .addCase(deleteRequest.pending, (state) => {
-              state.isLoading = true;
-            })
-            .addCase(deleteRequest.fulfilled, (state, action) => {
-              state.isLoading = false;
-              state.isSuccess = true;
-              state.isError = false;
-              toast.success("Item deleted successfully");
-            })
-            .addCase(deleteRequest.rejected, (state, action) => {
-              state.isLoading = false;
-              state.isError = true;
-              state.message = action.payload;
-              toast.error(action.payload);
-            })
-
-            .addMatcher(
-              (action) =>
-                [requestProduct.pending, approveRequest.pending, rejectRequest.pending,
-                deleteRequest.pending].includes(
-                  action.type
-                ),
-              (state) => {
-                state.isLoadingRequest = true;
-              }
-            )
-            .addMatcher(
-              (action) =>
-                [requestProduct.fulfilled, requestProduct.rejected, approveRequest.fulfilled, approveRequest.rejected, rejectRequest.fulfilled, rejectRequest.rejected,
-                deleteRequest.fulfilled,
-              deleteRequest.rejected,].includes(
-                  action.type
-                ),
-              (state) => {
-                state.isLoadingRequest = false;
-              
-              }
-            );
+            
          
       },
       
@@ -409,6 +251,5 @@ export const selectProduct = (state) => state.product.product;
 export const selectTotalStoreValue = (state) => state.product.totalStoreValue;
 export const selectOutOfStock = (state) => state.product.outOfStock;
 export const selectCategory = (state) => state.product.category;
-export const selectIsLoadingRequest = (state) => state.product.isLoadingRequest;
 
 export default productSlice.reducer;
