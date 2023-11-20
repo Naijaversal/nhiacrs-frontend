@@ -18,6 +18,7 @@ const initialState = {
 export const createProduct = createAsyncThunk(
   "products/create",
   async (formData, thunkAPI) => {
+
     try {
       return await productService.createProduct(formData);
     } catch (error) {
@@ -67,6 +68,7 @@ export const deleteProduct = createAsyncThunk(
         error.toString();
       console.log(message);
       return thunkAPI.rejectWithValue(message);
+      
     }
   }
 );
@@ -93,8 +95,15 @@ export const getProduct = createAsyncThunk(
 export const updateProduct = createAsyncThunk(
   "products/updateProduct",
   async ({ id, formData }, thunkAPI) => {
+     // Convert form data to a JavaScript object
+    const Data = {
+      name: formData.get("name"),
+      category: formData.get("category"),
+      quantity: formData.get("quantity"),
+      description: formData.get("description"),
+    };
     try {
-      return await productService.updateProduct(id, formData);
+      return await productService.updateProduct(id, Data);
     } catch (error) {
       const message =
         (error.response &&
@@ -165,7 +174,7 @@ const productSlice = createSlice({
         state.isError = false;
         console.log(action.payload);
         state.products.push(action.payload);
-        toast.success("Item added successfully");
+        toast.success(action.payload);
       })
       .addCase(createProduct.rejected, (state, action) => {
         state.isLoading = false;
@@ -196,13 +205,15 @@ const productSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        toast.success("Item deleted successfully");
+        toast.success(action.payload);
+         toast.success("Product deleted successfully.");
       })
       .addCase(deleteProduct.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
         toast.error(action.payload);
+        
       })
       .addCase(getProduct.pending, (state) => {
         state.isLoading = true;
@@ -226,7 +237,7 @@ const productSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        toast.success("Item updated successfully");
+        toast.success(action.payload);
       })
       .addCase(updateProduct.rejected, (state, action) => {
         state.isLoading = false;

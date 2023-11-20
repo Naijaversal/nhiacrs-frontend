@@ -17,14 +17,17 @@ import { SET_LOGIN } from "./redux/features/auth/authSlice";
 import AddProduct from "./pages/addProduct/AddProduct";
 import ProductDetail from "./components/product/productDetail/ProductDetail";
 import EditProduct from "./pages/editProduct/EditProduct";
+import MakeRequest from "./pages/editProduct/MakeRequest";
 import Profile from "./pages/profile/Profile";
 import EditProfile from "./pages/profile/EditProfile";
-import RequestProduct from "./pages/requestProduct/Request";
+import TaskDashboard from "./pages/taskDashboard/TaskDashboard";
+import AddTask from "./pages/addTask/AddTask";
+import TaskDetail from "./components/task/taskDetail/TaskDetail";
+import EditTask from "./pages/editTask/EditTask";
+
 import { ShowOnAdmin } from "./components/protect/HiddenLink";
 import Contact from "./pages/contact/Contact";
-import AllRequest from "./pages/dashboard/AllRequest";
-import Activitydashboard from "./pages/activity/Activitydashboard";
-import AddActivity from "./pages/activity/Addactivity";
+
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -41,22 +44,23 @@ function App() {
   return (
     <BrowserRouter>
       <ToastContainer
-      position="top-right"
-autoClose={600}
-hideProgressBar={true}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss={false}
-draggable
-pauseOnHover={false}
-theme="light" 
-transition={Zoom} 
-limit={1} />
+        position="top-right"
+        autoClose={600}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover={false}
+        theme="light"
+        transition={Zoom}
+        limit={1}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-       <Route path="/register" element={<Register />} /> 
+        <Route path="/register" element={<Register />} />
         <Route path="/forgot" element={<Forgot />} />
         <Route path="/resetpassword/:resetToken" element={<Reset />} />
 
@@ -70,17 +74,7 @@ limit={1} />
             </Sidebar>
           }
         />
-        
-        <Route
-          path="/all-request"
-          element={
-            <Sidebar>
-              <Layout>
-                <AllRequest />
-              </Layout>
-            </Sidebar>
-          }
-        />
+
         <Route
           path="/add-product"
           element={
@@ -91,7 +85,7 @@ limit={1} />
             </Sidebar>
           }
         />
-       
+
         <Route
           path="/product-detail/:id"
           element={
@@ -102,6 +96,7 @@ limit={1} />
             </Sidebar>
           }
         />
+
         <Route
           path="/edit-product/:id"
           element={
@@ -112,6 +107,51 @@ limit={1} />
             </Sidebar>
           }
         />
+
+        <Route
+          path="/task-dashboard"
+          element={
+            <Sidebar>
+              <Layout>
+                <TaskDashboard />
+              </Layout>
+            </Sidebar>
+          }
+        />
+
+        <Route
+          path="/add-task"
+          element={
+            <Sidebar>
+              <Layout>
+                <AddTask />
+              </Layout>
+            </Sidebar>
+          }
+        />
+
+        <Route
+          path="/task-detail/:id"
+          element={
+            <Sidebar>
+              <Layout>
+                <TaskDetail />
+              </Layout>
+            </Sidebar>
+          }
+        />
+
+        <Route
+          path="/edit-task/:id"
+          element={
+            <Sidebar>
+              <Layout>
+                <EditTask />
+              </Layout>
+            </Sidebar>
+          }
+        />
+
         <Route
           path="/profile"
           element={
@@ -132,36 +172,18 @@ limit={1} />
             </Sidebar>
           }
         />
-        <Route
-          path="/activity-dashboard"
+       
+       <Route
+          path="/make-request/:id"
           element={
             <Sidebar>
               <Layout>
-                <Activitydashboard />
+                <MakeRequest />
               </Layout>
             </Sidebar>
           }
         />
-        <Route
-          path="/add-activity"
-          element={
-            <Sidebar>
-              <Layout>
-                <AddActivity />
-              </Layout>
-            </Sidebar>
-          }
-        />
-        <Route
-          path="request-product/:id"
-          element={
-            <Sidebar>
-              <Layout>
-                <RequestProduct />
-              </Layout>
-            </Sidebar>
-          }
-        />
+       
       </Routes>
       
     </BrowserRouter>

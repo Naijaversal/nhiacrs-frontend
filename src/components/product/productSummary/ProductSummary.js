@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import "./ProductSummary.scss";
-import { TbCurrencyNaira } from "react-icons/tb";
 import {BsBagX, BsBagCheck } from "react-icons/bs";
 import { AiOutlineFolderOpen } from "react-icons/ai";
 import InfoBox from "../../infoBox/InfoBox";

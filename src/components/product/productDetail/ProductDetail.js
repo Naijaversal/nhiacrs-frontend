@@ -36,7 +36,7 @@ const ProductDetail = () => {
     if (isError) {
       console.log(message);
     }
-  }, [isLoggedIn, isError, message, dispatch]);
+  }, [isLoggedIn, isError, message, dispatch, id]);
 
   return (
     <div className="product-detail">
@@ -57,10 +57,7 @@ const ProductDetail = () => {
             <p>
               <b>&rarr; Category : </b> {product.category}
             </p>
-            <p>
-              <b>&rarr; Price : </b> {"₦ "}
-              {product.price}
-            </p>
+            
             <p>
               <b>&rarr; Quantity in stock : </b> {product.quantity}
             </p>

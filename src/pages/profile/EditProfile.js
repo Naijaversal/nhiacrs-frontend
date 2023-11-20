@@ -107,6 +107,7 @@ const EditProfile = () => {
             <p className="edit-p">
             <h5 className="edit-p">Role:</h5>
               <input className="edit-p"
+              disabled
                 type="text"
                 name="role"
                 value={profile?.role}

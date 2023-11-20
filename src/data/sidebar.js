@@ -10,44 +10,40 @@ const menu = [
     icon: <BsCart />,
     childrens: [
       {
-        title: "Summary",
-        icon: <BsDice4 size={15}/>,
+        title: "Inventory Dashboard",
+        // icon: <BsDice4 size={15}/>,
         path: "/dashboard",
       },
       {
         title: "Add Item",
         icon: <BsCartPlus size={15}/>,
         path: "/add-product",
-      },
-     
-      {
-        title: "All Request",
-        icon: <BsCartCheck size={15}/>,
-        path: "/all-request",
-      },
+      }
     ],
   },
 
+   
+      {
+        title: "Request Dashboard",
+        icon: <BsCartCheck size={25}/>,
+        path: "/make-request",
+    
+      },
  
   {
     title: "Reports",
     icon: <BsBook />,
     childrens: [
       {
-        title: "Summary",
-        icon: <BsDice4 size={15}/>,
+        title: "Report Dashboard",
+        // icon: <BsDice4 size={15}/>,
         path: "/report-dashboard",
       },
       {
         title: "Write Report",
         icon: <BsPencilSquare size={15}/>,
         path: "/contact-us",
-      },
-      {
-        title: "Approve Reports",
-        icon: <BsClipboardCheck size={15}/>,
-        path: "/approve-request",
-      },
+      }
     ],
     
   },
@@ -56,14 +52,14 @@ const menu = [
     icon: <BsCalendar4Event />,
     childrens: [
       {
-        title: "Summary",
-        icon: <BsDice4 size={15}/>,
-        path: "/activity-dashboard",
+        title: "Task Dasboard",
+        // icon: <BsDice4 size={15}/>,
+        path: "/task-dashboard",
       },
       {
-        title: "Add Activity",
+        title: "Add Task",
         icon: <BsCalendar2Plus size={15}/>,
-        path: "/add-activity",
+        path: "/add-task",
       },
     ],
     

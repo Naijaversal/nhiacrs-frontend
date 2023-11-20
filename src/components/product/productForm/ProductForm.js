@@ -2,42 +2,21 @@ import React from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Card from "../../card/Card";
-
 import "./ProductForm.scss";
+import { Link } from "react-router-dom";
 
 const ProductForm = ({
   product,
-  productImage,
-  imagePreview,
   description,
   setDescription,
   handleInputChange,
-  handleImageChange,
   saveProduct,
 }) => {
   return (
     <div className="add-product">
       <Card cardClass={"card"}>
         <form onSubmit={saveProduct}>
-          <Card cardClass={"group"}>
-            <label>Item Image</label>
-            <code className="--color-dark">
-              Supported Formats: jpg, jpeg, png
-            </code>
-            <input
-              type="file"
-              name="image"
-              onChange={(e) => handleImageChange(e)}
-            />
-
-            {imagePreview != null ? (
-              <div className="image-preview">
-                <img src={imagePreview} alt="product" />
-              </div>
-            ) : (
-              <p>No image set for this item.</p>
-            )}
-          </Card>
+          
           <label>Item Name:</label>
           <input
             type="text"
@@ -87,6 +66,11 @@ const ProductForm = ({
             <button type="submit" className="--btn --btn-success">
               Save Item
             </button>
+           <div className="--my">
+            <Link to={`/dashboard`}>
+              <button className="--btn --btn-secondary">Back</button>
+            </Link>
+          </div>
           </div>
         </form>
       </Card>

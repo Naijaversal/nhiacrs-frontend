@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { SpinnerImg } from "../../loader/Loader";
-import "../productList/productList.scss";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
-import { AiOutlineEye } from "react-icons/ai";
+import "./TaskList.scss";
 import Search from "../../search/Search";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  FILTER_PRODUCTS,
-  selectFilteredPoducts,
-} from "../../../redux/features/product/filterSlice";
+  FILTER_TASKS,
+  selectFilteredTasks,
+} from "../../../redux/features/task/taskfilterSlice";
 import ReactPaginate from "react-paginate";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import {
-  deleteProduct,
-  getProducts,
-} from "../../../redux/features/product/productSlice";
+  deleteTask,
+  getTasks,
+} from "../../../redux/features/task/taskSlice";
 import { Link } from "react-router-dom";
 import { ShowOnAdmin, ShowOnUser } from "../../protect/HiddenLink";
 
-const RequestList = ({ products, isLoading }) => {
+const TaskList = ({ tasks, isLoading }) => {
   const [search, setSearch] = useState("");
-  const filteredProducts = useSelector(selectFilteredPoducts);
+  const filteredTasks = useSelector(selectFilteredTasks);
 
   const dispatch = useDispatch();
 
@@ -33,20 +31,28 @@ const RequestList = ({ products, isLoading }) => {
     return text;
   };
 
-  const delProduct = async (id) => {
+  function shortenDate(dateString) {
+  const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+  const shortDate = new Date(dateString).toLocaleDateString(undefined, options);
+  return shortDate;
+}
+
+
+
+  const delTask = async (id) => {
     console.log(id);
-    await dispatch(deleteProduct(id));
-    await dispatch(getProducts());
+    await dispatch(deleteTask(id));
+    await dispatch(getTasks());
   };
 
   const confirmDelete = (id) => {
     confirmAlert({
-      title: "Delete Product",
-      message: "Are you sure you want to delete this product.",
+      title: "Delete Task",
+      message: "Are you sure you want to delete this task.",
       buttons: [
         {
           label: "Delete",
-          onClick: () => delProduct(id),
+          onClick: () => delTask(id),
         },
         {
           label: "Cancel",
@@ -65,27 +71,27 @@ const RequestList = ({ products, isLoading }) => {
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
 
-    setCurrentItems(filteredProducts.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(filteredProducts.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, filteredProducts]);
+    setCurrentItems(filteredTasks.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(filteredTasks.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, filteredTasks]);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % filteredProducts.length;
+    const newOffset = (event.selected * itemsPerPage) % filteredTasks.length;
     setItemOffset(newOffset);
   };
   //   End Pagination
 
   useEffect(() => {
-    dispatch(FILTER_PRODUCTS({ products, search }));
-  }, [products, search, dispatch]);
+    dispatch(FILTER_TASKS({ tasks, search }));
+  }, [tasks, search, dispatch]);
 
   return (
-    <div className="product-list">
+    <div className="task-list">
       <hr />
       <div className="table">
         <div className="--flex-between --flex-dir-column">
           <span>
-            <h3>Inventory Items</h3>
+            <h3>Task List</h3>
           </span>
           <span className="--max-width-35 ">
             <Search
@@ -98,69 +104,54 @@ const RequestList = ({ products, isLoading }) => {
         {isLoading && <SpinnerImg />}
 
         <div className="table">
-          {!isLoading && products.length === 0 ? (
-            <p>-- No product found, please add a product...</p>
+          {!isLoading && tasks.length === 0 ? (
+            <p>-- No tasks found, please add a task...</p>
           ) : (
             <table>
               <thead>
                 <tr>
-                  <th>s/n</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Value</th>
-                  <th className="--center-all">Action</th>
+                  <th>S/N</th>
+                  <th>Title</th>
+                  <th>Department</th>
+                  <th>Status</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th className="--center-all">Actions</th>
                 </tr>
               </thead>
 
               <tbody>
-                {currentItems.map((product, index) => {
-                  const { _id, name, category, price, quantity } = product;
+                {currentItems.map((task, index) => {
+                  const { _id, title, department, status, startDate, endDate } = task;
                   return (
                     <tr key={_id}>
                       <td>{index + 1}</td>
-                      <td>{shortenText(name, 16)}</td>
-                      <td>{category}</td>
-                      <td>
-                        {"₦ "}
-                        {price}
-                      </td>
-                      <td>{quantity}</td>
-                      <td>
-                        {"₦ "}
-                        {price * quantity}
-                      </td>
-                      
+                      <td>{shortenText(title, 40)}</td>
+                      <td>{department}</td>
+                      <td>{status}</td>
+                      <td>{shortenDate(startDate)}</td>
+                      <td>{shortenDate(endDate)}</td>
                       <td className="icons">
-                     
                         <span className="--center-all">
-                          <Link to={`/product-detail/${_id}`}>
-                            <AiOutlineEye size={15} color={"white"} />
+                          <Link to={`/task-detail/${_id}`}>
+                            <button className="--btn --btn-secondary">Details</button>
                           </Link>
                         </span>
                         <span className="--center-all">
-                          <Link to={`/edit-product/${_id}`}>
-                            <FaEdit size={15} color={"white"} />
+                          <Link to={`/edit-task/${_id}`}>
+                            <button className="--btn --btn-secondary">Edit</button>
                           </Link>
                         </span>
+                        
                         <span className="--center-all">
-                          <FaTrashAlt
-                            size={15}
-                            color={"red"}
+                          <button
+                            className="--btn --btn-danger"
                             onClick={() => confirmDelete(_id)}
-                          />
+                          >
+                            Delete
+                          </button>
                         </span>
-                     
-                        <span className="--center-all">
-                          <Link to={`/edit-product/${_id}`}>
-                            <button className="--btn --btn-primary">Make Request</button>
-                          </Link>
-                        </span>
-                       
-
                       </td>
-                      
                     </tr>
                   );
                 })}
@@ -187,4 +178,4 @@ const RequestList = ({ products, isLoading }) => {
   );
 };
 
-export default RequestList;
+export default TaskList;

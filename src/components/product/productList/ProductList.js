@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SpinnerImg } from "../../loader/Loader";
 import "./productList.scss";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
-import { AiOutlineEye } from "react-icons/ai";
+// import { AiOutlineEye } from "react-icons/ai";
 import Search from "../../search/Search";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -108,7 +108,7 @@ const ProductList = ({ products, isLoading }) => {
                   <th>Name</th>
                   <th>Category</th>
                   <th>Quantity</th>
-                  <th className="--center-all">Action</th>
+                  <th className="--center-all">Actions</th>
                 </tr>
               </thead>
 
@@ -127,27 +127,32 @@ const ProductList = ({ products, isLoading }) => {
                      
                         <span className="--center-all">
                           <Link to={`/product-detail/${_id}`}>
-                           <button className="--btn --btn-danger">Details</button>
+                           <button className="--btn --btn-secondary">Details</button>
                             {/* <AiOutlineEye size={15} color={"white"} /> */}
                           </Link>
                         </span>
+                        <ShowOnAdmin>
                         <span className="--center-all">
                           <Link to={`/edit-product/${_id}`}>
                          <button className="--btn --btn-secondary">Edit</button>
                             {/* <FaEdit size={15} color={"white"} /> */}
                           </Link>
                         </span>
-                        {/* <span className="--center-all">
+                        </ShowOnAdmin>
+
+                        <ShowOnAdmin>
+                        <span className="--center-all">
                           <FaTrashAlt
                             size={15}
                             color={"red"}
                             onClick={() => confirmDelete(_id)}
                           />
-                        </span> */}
+                        </span>
+                        </ShowOnAdmin>
                      
                         <span className="--center-all">
-                          <Link to={`/request-product/${_id}`}>
-                            <button className="--btn --btn-primary">Make Request</button>
+                          <Link to={`/make-request/${_id}`}>
+                            <button className="--btn --btn-primary">Request</button>
                           </Link>
                         </span>
                        
